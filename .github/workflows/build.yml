@@ -24,17 +24,30 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x gradlew
 
-    - name: Create Google Services JSON Files
+    - name: Inject Google Services and Missing Strings
       run: |
-        mkdir -p app_pojavlauncher/src/main
+        mkdir -p app_pojavlauncher/src/main/res/values
         mkdir -p app_pojavlauncher/src/debug
-        
-        JSON_CONTENT='{"project_info":{"project_number":"0","project_id":"dummy","storage_bucket":"dummy.appspot.com"},"client":[{"client_info":{"mobilesdk_app_id":"1:0:android:0","android_client_info":{"package_name":"com.cslaucher.plus.debug"}},"api_key":[{"current_key":"dummy"}]}]}'
+
+        JSON_CONTENT='{"project_info":{"project_number":"0","project_id":"dummy","storage_bucket":"dummy.appspot.com","firebase_url":"https://dummy.firebaseio.com"},"client":[{"client_info":{"mobilesdk_app_id":"1:0:android:0","android_client_info":{"package_name":"com.cslaucher.plus.debug"}},"api_key":[{"current_key":"dummy"}]}]}'
         
         echo "$JSON_CONTENT" > app_pojavlauncher/google-services.json
         echo "$JSON_CONTENT" > app_pojavlauncher/src/google-services.json
         echo "$JSON_CONTENT" > app_pojavlauncher/src/main/google-services.json
         echo "$JSON_CONTENT" > app_pojavlauncher/src/debug/google-services.json
+
+        # Inject missing string resource required by FirebaseSyncManager
+        cat << 'EOF' > app_pojavlauncher/src/main/res/values/dummy_firebase_strings.xml
+        <?xml version="1.0" encoding="utf-8"?>
+        <resources>
+            <string name="firebase_database_url" translatable="false">https://dummy.firebaseio.com</string>
+            <string name="gcm_defaultSenderId" translatable="false">1234567890</string>
+            <string name="google_api_key" translatable="false">dummy_key</string>
+            <string name="google_app_id" translatable="false">1:0:android:0</string>
+            <string name="google_storage_bucket" translatable="false">dummy.appspot.com</string>
+            <string name="project_id" translatable="false">dummy</string>
+        </resources>
+        EOF
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug
