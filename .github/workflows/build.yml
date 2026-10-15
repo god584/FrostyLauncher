@@ -24,6 +24,11 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x gradlew
 
+    - name: Create Dummy Google Services JSON
+      run: |
+        mkdir -p app_pojavlauncher
+        echo '{"project_info":{"project_number":"0","project_id":"dummy","storage_bucket":"dummy.appspot.com"},"client":[{"client_info":{"mobilesdk_app_id":"1:0:android:0","android_client_info":{"package_name":"com.kila.zombie.pobeda"}},"api_key":[{"current_key":"dummy"}]}]}' > app_pojavlauncher/google-services.json
+
     - name: Build Debug APK
       run: ./gradlew assembleDebug
 
@@ -31,4 +36,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: FrostyLauncher-APK
-        path: app/build/outputs/apk/debug/app-debug.apk
+        path: app_pojavlauncher/build/outputs/apk/debug/app_pojavlauncher-debug.apk
