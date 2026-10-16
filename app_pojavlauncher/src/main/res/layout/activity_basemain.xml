@@ -15,10 +15,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-		<!-- ══ Launch stage (Phase 5 Req-3/4 + Remote Config feature) ══
-		     Shows the existing static "Opening game window…" stage, or — when
-		     the remote config enables it AND the user picked Video Loading
-		     Screen — a streamed MP4 behind the game surface. -->
+		<!-- ══ Launch stage (Frosty Launcher) ══ -->
 		<net.kdt.pojavlaunch.launch.LaunchStageView
 			android:id="@+id/launch_stage_backdrop"
 			android:layout_width="match_parent"
@@ -44,8 +41,8 @@
 					android:layout_height="wrap_content"
 					android:layout_marginTop="16dp"
 					android:letterSpacing="0.22"
-					android:text="CS LAUNCHER PLUS"
-					android:textColor="#B9BBC4"
+					android:text="FROSTY LAUNCHER"
+					android:textColor="#00D2FF"
 					android:textSize="10sp"
 					android:textStyle="bold" />
 
@@ -63,7 +60,7 @@
 					android:layout_height="28dp"
 					android:layout_marginTop="14dp"
 					android:indeterminate="true"
-					android:indeterminateTint="#B9BBC4" />
+					android:indeterminateTint="#00D2FF" />
 
 				<TextView
 					android:layout_width="wrap_content"
@@ -123,11 +120,6 @@
 
 		</net.kdt.pojavlaunch.customcontrols.ControlLayout>
 
-		<!-- CS Loading video host (item-5/v3): ABOVE the game surface so the
-		     bundled video is actually visible (this was the real reason the
-		     video never showed — it used to sit BELOW the opaque SurfaceView/
-		     TextureView). Removed exactly on the first presented frame.
-		     Not clickable: touches fall through to the controls below. -->
 		<FrameLayout
 			android:id="@+id/video_stage_host"
 			android:layout_width="match_parent"
@@ -135,9 +127,6 @@
 			android:clickable="false"
 			android:focusable="false" />
 
-		<!-- Phase 8: mini transparent boot log on the LEFT (errors red, warnings
-		     amber). Starts with the game surface, auto-hides on the first
-		     presented frame; EXPAND opens the full LoggerView below/above it. -->
 		<net.kdt.pojavlaunch.launch.BootLogOverlay
 			android:id="@+id/boot_log_overlay"
 			android:layout_width="match_parent"
@@ -153,7 +142,7 @@
 			android:visibility="gone"
 		/>
 
-		<!-- CS Perf: live FPS overlay chip (topmost; pref-gated, zero-cost when off) -->
+		<!-- FPS Counter Chip -->
 		<TextView
 			android:id="@+id/fps_counter_chip"
 			android:layout_width="wrap_content"
@@ -173,8 +162,7 @@
 			android:textStyle="bold"
 			android:visibility="gone" />
 
-		<!-- CS HUD: live Memory chip (same translucent recipe as the FPS chip;
-		     pref-gated showMemoryChip, draggable anywhere, position persists) -->
+		<!-- RAM Counter Chip -->
 		<TextView
 			android:id="@+id/mem_counter_chip"
 			android:layout_width="wrap_content"
@@ -196,7 +184,6 @@
 
 	</FrameLayout>
 
-	<!-- Req-4: obsidian glass control panel hosting Keyboard/Mouse/Logs/ForceClose -->
 	<ListView
 		android:layout_width="268dp"
 		android:layout_height="match_parent"
@@ -214,4 +201,3 @@
 		android:id="@+id/main_navigation_view"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
-
