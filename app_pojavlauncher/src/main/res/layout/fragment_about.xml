@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ═══════════════════════════════════════════════════════════════════
-     ABOUT — "BUILD MANIFEST" (Phase 9 redesign)
-     Top status bar (back · title · version key-cap), then a two-column
-     dossier: LEFT fixed identity card (logo, name, tagline, channel
-     links), RIGHT scrolling manifest with numbered sections —
-     01 TEAM (2×2 tiles) · 02 LINEAGE (Pojav / Amethyst) · 03 LEGAL.
-     Ids used by AboutFragment preserved (about_*).
+     ABOUT — "BUILD MANIFEST"
+     01 TEAM (Single Founder - GodVansh) · 02 LINEAGE · 03 LEGAL.
      ═══════════════════════════════════════════════════════════════════ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -96,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/cs_about_name"
+                android:text="FrostyLauncher"
                 android:textColor="#F4F6F9"
                 android:textSize="17sp" />
 
@@ -106,8 +102,8 @@
                 android:layout_marginTop="3dp"
                 android:fontFamily="monospace"
                 android:letterSpacing="0.1"
-                android:text="@string/cs_about_tagline"
-                android:textColor="#8A909C"
+                android:text="YOUR MINECRAFT. REIMAGINED."
+                android:textColor="#00D2FF"
                 android:textSize="9sp" />
 
             <View
@@ -172,7 +168,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
-                android:text="@string/cs_about_footer"
+                android:text="FROSTY LAUNCHER · ALL RIGHTS RESERVED"
                 android:textColor="#4F5460"
                 android:textSize="8.5sp" />
         </LinearLayout>
@@ -197,66 +193,30 @@
                     <TextView style="@style/AbIndex" android:text="01" />
                     <TextView android:id="@+id/about_credits_heading" style="@style/AbSectionTitle" android:text="Team" />
                     <View style="@style/AbRule" />
-                    <TextView style="@style/AbSectionMeta" android:text="CRAFT STUDIO" />
+                    <TextView style="@style/AbSectionMeta" android:text="FROSTY STUDIO" />
                 </LinearLayout>
 
+                <!-- SINGLE FOUNDER CARD -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:baselineAligned="false"
                     android:orientation="horizontal">
 
-                    <LinearLayout style="@style/AbTeamTile" android:layout_marginEnd="5dp">
+                    <LinearLayout style="@style/AbTeamTile" android:layout_width="match_parent">
                         <FrameLayout style="@style/AbAvatarRing">
-                            <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/cs_team_rohit" />
+                            <!-- Teri Minecraft Skin Image Path -->
+                            <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/ic_launcher_foreground" />
                         </FrameLayout>
                         <LinearLayout style="@style/AbTeamTextCol">
                             <TextView style="@style/AbTeamName" android:text="GodVansh" />
-                            <TextView style="@style/AbTeamRole" android:text="LEAD DEVELOPER" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout style="@style/AbTeamTile" android:layout_marginStart="5dp">
-                        <FrameLayout style="@style/AbAvatarRing">
-                            <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/cs_team_notdanger" />
-                        </FrameLayout>
-                        <LinearLayout style="@style/AbTeamTextCol">
-                            <TextView style="@style/AbTeamName" android:text="GodVansh" />
-                            <TextView style="@style/AbTeamRole" android:text="FOUNDER" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-                    <LinearLayout style="@style/AbTeamTile" android:layout_marginEnd="5dp">
-                        <FrameLayout style="@style/AbAvatarRing">
-                            <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/cs_team_mineradi" />
-                        </FrameLayout>
-                        <LinearLayout style="@style/AbTeamTextCol">
-                            <TextView style="@style/AbTeamName" android:text="GodVansh" />
-                            <TextView style="@style/AbTeamRole" android:text="FOUNDER" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout style="@style/AbTeamTile" android:layout_marginStart="5dp">
-                        <FrameLayout style="@style/AbAvatarRing">
-                            <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/cs_team_ender" />
-                        </FrameLayout>
-                        <LinearLayout style="@style/AbTeamTextCol">
-                            <TextView style="@style/AbTeamName" android:text="GodVansh" />
-                            <TextView style="@style/AbTeamRole" android:text="FOUNDER" />
+                            <TextView style="@style/AbTeamRole" android:text="FOUNDER &amp; LEAD DEVELOPER" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
                 <!-- 02 LINEAGE -->
-                <LinearLayout style="@style/AbSectionHead">
+                <LinearLayout style="@style/AbSectionHead" android:layout_marginTop="16dp">
                     <TextView style="@style/AbIndex" android:text="02" />
                     <TextView style="@style/AbSectionTitle" android:text="Lineage" />
                     <View style="@style/AbRule" />
@@ -277,23 +237,8 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/about_amethyst_card"
-                    style="@style/AbLineageCard"
-                    android:layout_marginTop="10dp">
-
-                    <FrameLayout style="@style/AbLineageIconWell">
-                        <ImageView style="@style/AbLineageIcon" android:src="@drawable/amethyst_logo" />
-                    </FrameLayout>
-                    <LinearLayout style="@style/AbLineageTextCol">
-                        <TextView style="@style/AbLineageName" android:text="@string/cs_about_amethyst_name" />
-                        <TextView style="@style/AbLineageRole" android:text="@string/cs_about_amethyst_role" />
-                        <TextView style="@style/AbLineageDesc" android:text="@string/cs_about_amethyst_desc" />
-                    </LinearLayout>
-                </LinearLayout>
-
                 <!-- 03 LEGAL -->
-                <LinearLayout style="@style/AbSectionHead">
+                <LinearLayout style="@style/AbSectionHead" android:layout_marginTop="16dp">
                     <TextView style="@style/AbIndex" android:text="03" />
                     <TextView android:id="@+id/about_legal_heading" style="@style/AbSectionTitle" android:text="@string/cs_about_legal_heading" />
                     <View style="@style/AbRule" />
