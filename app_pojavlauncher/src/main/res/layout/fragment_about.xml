@@ -211,7 +211,7 @@
                             <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/cs_team_rohit" />
                         </FrameLayout>
                         <LinearLayout style="@style/AbTeamTextCol">
-                            <TextView style="@style/AbTeamName" android:text="ROHIT_45" />
+                            <TextView style="@style/AbTeamName" android:text="GodVansh" />
                             <TextView style="@style/AbTeamRole" android:text="LEAD DEVELOPER" />
                         </LinearLayout>
                     </LinearLayout>
@@ -221,7 +221,7 @@
                             <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/cs_team_notdanger" />
                         </FrameLayout>
                         <LinearLayout style="@style/AbTeamTextCol">
-                            <TextView style="@style/AbTeamName" android:text="NOT DANGER" />
+                            <TextView style="@style/AbTeamName" android:text="GodVansh" />
                             <TextView style="@style/AbTeamRole" android:text="FOUNDER" />
                         </LinearLayout>
                     </LinearLayout>
@@ -239,7 +239,7 @@
                             <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/cs_team_mineradi" />
                         </FrameLayout>
                         <LinearLayout style="@style/AbTeamTextCol">
-                            <TextView style="@style/AbTeamName" android:text="MINER_ADI" />
+                            <TextView style="@style/AbTeamName" android:text="GodVansh" />
                             <TextView style="@style/AbTeamRole" android:text="FOUNDER" />
                         </LinearLayout>
                     </LinearLayout>
@@ -249,7 +249,7 @@
                             <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/cs_team_ender" />
                         </FrameLayout>
                         <LinearLayout style="@style/AbTeamTextCol">
-                            <TextView style="@style/AbTeamName" android:text="ENDER" />
+                            <TextView style="@style/AbTeamName" android:text="GodVansh" />
                             <TextView style="@style/AbTeamRole" android:text="FOUNDER" />
                         </LinearLayout>
                     </LinearLayout>
