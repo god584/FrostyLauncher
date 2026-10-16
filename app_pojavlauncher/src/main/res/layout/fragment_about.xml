@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ═══════════════════════════════════════════════════════════════════
-     ABOUT — FROSTY LAUNCHER (Single Founder Redesign)
+     ABOUT — FROSTY LAUNCHER (Single Founder Redesign + Custom Skin)
      ═══════════════════════════════════════════════════════════════════ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -195,7 +195,7 @@
                     <TextView style="@style/AbSectionMeta" android:text="FROSTY STUDIO" />
                 </LinearLayout>
 
-                <!-- SINGLE FOUNDER TILE -->
+                <!-- SINGLE FOUNDER TILE WITH MYSKIN -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
                         <FrameLayout style="@style/AbAvatarRing">
                             <net.kdt.pojavlaunch.ui.AvatarView 
                                 style="@style/AbAvatar" 
-                                android:src="@drawable/cs_logo" />
+                                android:src="@drawable/myskin" />
                         </FrameLayout>
                         <LinearLayout style="@style/AbTeamTextCol">
                             <TextView style="@style/AbTeamName" android:text="GodVansh" />
@@ -231,11 +231,18 @@
                         <ImageView style="@style/AbLineageIcon" android:src="@drawable/pojav_logo" />
                     </FrameLayout>
                     <LinearLayout style="@style/AbLineageTextCol">
-                        <TextView style2="@style/AbLineageName" android:text="@string/cs_about_pojav_name" />
+                        <TextView style="@style/AbLineageName" android:text="@string/cs_about_pojav_name" />
                         <TextView style="@style/AbLineageRole" android:text="@string/cs_about_pojav_role" />
                         <TextView style="@style/AbLineageDesc" android:text="@string/cs_about_pojav_desc" />
                     </LinearLayout>
                 </LinearLayout>
+
+                <!-- Dummy card with required ID to satisfy AboutFragment.java -->
+                <LinearLayout
+                    android:id="@+id/about_amethyst_card"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone" />
 
                 <!-- 03 LEGAL -->
                 <LinearLayout style="@style/AbSectionHead" android:layout_marginTop="16dp">
