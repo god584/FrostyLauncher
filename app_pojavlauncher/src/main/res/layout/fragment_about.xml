@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ═══════════════════════════════════════════════════════════════════
-     ABOUT — "BUILD MANIFEST"
-     01 TEAM (Single Founder - GodVansh) · 02 LINEAGE · 03 LEGAL.
+     ABOUT — FROSTY LAUNCHER (Single Founder Redesign)
      ═══════════════════════════════════════════════════════════════════ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -40,7 +39,7 @@
             android:fontFamily="sans-serif-medium"
             android:letterSpacing="0.14"
             android:text="BUILD MANIFEST  ·  ABOUT"
-            android:textColor="#8A909C"
+            android:textColor="#00D2FF"
             android:textSize="10sp" />
 
         <TextView
@@ -168,7 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
-                android:text="FROSTY LAUNCHER · ALL RIGHTS RESERVED"
+                android:text="FROSTY LAUNCHER · SOLE FOUNDER GODVANSH"
                 android:textColor="#4F5460"
                 android:textSize="8.5sp" />
         </LinearLayout>
@@ -196,7 +195,7 @@
                     <TextView style="@style/AbSectionMeta" android:text="FROSTY STUDIO" />
                 </LinearLayout>
 
-                <!-- SINGLE FOUNDER CARD -->
+                <!-- SINGLE FOUNDER TILE -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -205,12 +204,13 @@
 
                     <LinearLayout style="@style/AbTeamTile" android:layout_width="match_parent">
                         <FrameLayout style="@style/AbAvatarRing">
-                            <!-- Teri Minecraft Skin Image Path -->
-                            <net.kdt.pojavlaunch.ui.AvatarView style="@style/AbAvatar" android:src="@drawable/ic_launcher_foreground" />
+                            <net.kdt.pojavlaunch.ui.AvatarView 
+                                style="@style/AbAvatar" 
+                                android:src="@drawable/cs_logo" />
                         </FrameLayout>
                         <LinearLayout style="@style/AbTeamTextCol">
                             <TextView style="@style/AbTeamName" android:text="GodVansh" />
-                            <TextView style="@style/AbTeamRole" android:text="FOUNDER &amp; LEAD DEVELOPER" />
+                            <TextView style="@style/AbTeamRole" android:text="FOUNDER &amp; LEAD DEVELOPER" android:textColor="#00D2FF" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -231,7 +231,7 @@
                         <ImageView style="@style/AbLineageIcon" android:src="@drawable/pojav_logo" />
                     </FrameLayout>
                     <LinearLayout style="@style/AbLineageTextCol">
-                        <TextView style="@style/AbLineageName" android:text="@string/cs_about_pojav_name" />
+                        <TextView style2="@style/AbLineageName" android:text="@string/cs_about_pojav_name" />
                         <TextView style="@style/AbLineageRole" android:text="@string/cs_about_pojav_role" />
                         <TextView style="@style/AbLineageDesc" android:text="@string/cs_about_pojav_desc" />
                     </LinearLayout>
