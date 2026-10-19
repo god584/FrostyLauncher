@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ═══════════════════════════════════════════════════════════════════════════
-     FROSTY LAUNCHER — LAUNCHER HOME "STAGE" v2 (Icy-Blue Redesign)
+     FROSTY LAUNCHER — LAUNCHER HOME "STAGE" v2 (Fixed Java ID Bindings)
      ═══════════════════════════════════════════════════════════════════════ -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -292,7 +292,49 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lh_hero_name"
-            app:layout_constraintBottom_toTopOf="@id/lh_library" />
+            app:layout_constraintBottom_toTopOf="@id/lh_launch_row" />
+
+        <!-- ═══ LAUNCH CLUSTER & REQUIRED DUMMY BINDINGS ═══ -->
+        <LinearLayout
+            android:id="@+id/lh_launch_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/lh_library">
+
+            <View
+                android:id="@+id/lh_btn_launch"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/lh_edit_btn"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lh_launch_specs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/lh_spec_java_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/lh_spec_ram_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <!-- Download Progress Card -->
         <LinearLayout
