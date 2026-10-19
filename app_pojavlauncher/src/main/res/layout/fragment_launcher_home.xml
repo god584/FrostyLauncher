@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- ═══════════════════════════════════════════════════════════════════════════
-     FROSTY LAUNCHER — LAUNCHER HOME "STAGE" v2 (Fixed Java ID Bindings)
+     FROSTY LAUNCHER — LAUNCHER HOME "STAGE" v2 (All Java Bindings Restored)
      ═══════════════════════════════════════════════════════════════════════ -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -294,7 +294,7 @@
             app:layout_constraintTop_toBottomOf="@id/lh_hero_name"
             app:layout_constraintBottom_toTopOf="@id/lh_launch_row" />
 
-        <!-- ═══ LAUNCH CLUSTER & REQUIRED DUMMY BINDINGS ═══ -->
+        <!-- ═══ LAUNCH CLUSTER & ALL REQUIRED JAVA BINDINGS ═══ -->
         <LinearLayout
             android:id="@+id/lh_launch_row"
             android:layout_width="wrap_content"
@@ -310,6 +310,18 @@
                 android:id="@+id/lh_btn_launch"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/lh_launch_button"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/lh_launch_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:visibility="gone" />
 
             <ImageView
@@ -466,7 +478,7 @@
             android:visibility="gone"
             android:text="Your library will live here — create your first instance to begin."
             android:textColor="#B9B5C9"
-            android:textSize="12sp"
+            android:textSize="12sp
             android:includeFontPadding="false"
             app:layout_constraintStart_toStartOf="@id/lh_library"
             app:layout_constraintBottom_toBottomOf="parent"
