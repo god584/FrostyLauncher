@@ -255,7 +255,8 @@
                 app:tint="#00D2FF"
                 android:contentDescription="@null" />
         </LinearLayout>
-                 <TextView
+
+        <TextView
             android:id="@+id/lh_hero_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -300,10 +301,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/lh_library">
 
-            <View
+            <net.kdt.pojavlaunch.ui.PremiumPlayButtonView
                 android:id="@+id/lh_btn_launch"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:visibility="gone" />
 
             <View
@@ -449,7 +450,8 @@
                 android:textSize="10.5sp"
                 android:includeFontPadding="false" />
         </LinearLayout>
-                 <androidx.recyclerview.widget.RecyclerView
+
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lh_library"
             android:layout_width="0dp"
             android:layout_height="@dimen/lh_carousel_height"
