@@ -2,8 +2,12 @@ package net.kdt.pojavlaunch.fragments;
 
 import static net.kdt.pojavlaunch.Tools.hasNoOnlineProfileDialog;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,10 +16,6 @@ import androidx.fragment.app.Fragment;
 
 import net.kdt.pojavlaunch.R;
 import net.kdt.pojavlaunch.Tools;
-import net.kdt.pojavlaunch.authenticator.microsoft.CookieAuthHelper;
-import net.kdt.pojavlaunch.extra.ExtraConstants;
-import net.kdt.pojavlaunch.extra.ExtraCore;
-import net.kdt.pojavlaunch.value.MinecraftAccount;
 
 public class SelectAuthFragment extends Fragment {
     public static final String TAG = "AUTH_SELECT_FRAGMENT";
@@ -39,26 +39,9 @@ public class SelectAuthFragment extends Fragment {
                 () -> navigateTo(LocalLoginFragment.class, LocalLoginFragment.TAG, null)));
 
         if (mCookieButton != null) {
-            mCookieButton.setOnClickListener(v -> CookieAuthHelper.showCookieDialog(requireActivity(), new CookieAuthHelper.Callback() {
-                @Override
-                public void onSuccess(MinecraftAccount account) {
-                    if (!isAdded()) return;
-                    ExtraCore.setValue(ExtraConstants.ACCOUNT_CHANGED, account.username);
-                    Toast.makeText(getContext(), getString(R.string.main_login_done) + " (" + account.username + ")", Toast.LENGTH_SHORT).show();
-                    if (getParentFragmentManager().getBackStackEntryCount() > 0) {
-                        getParentFragmentManager().popBackStack();
-                    }
-                }
-
-                @Override
-                public void onError(String message) {
-                    if (!isAdded()) return;
-                    Toast.makeText(getContext(), "Cookie login failed: " + message, Toast.LENGTH_LONG).show();
-                }
-            }));
+            mCookieButton.setOnClickListener(v -> CookieAuthHelper.showCookieDialog(requireContext()));
         }
 
-        // Staggered rise-in: header first, then the cards, then the note
         float rise = 18f * getResources().getDisplayMetrics().density;
         animateIn(view.findViewById(R.id.auth_header), 0, rise);
         animateIn(mMicrosoftButton, 90, rise);
@@ -85,8 +68,7 @@ public class SelectAuthFragment extends Fragment {
                 .start();
     }
 
-    /** Navigate within right pane if inside MainMenuFragment, otherwise full-screen swap. */
-    private void navigateTo(Class<? extends Fragment> cls, String tag, android.os.Bundle args) {
+    private void navigateTo(Class<? extends Fragment> cls, String tag, Bundle args) {
         Fragment parent = getParentFragment();
         if (parent instanceof MainMenuFragment) {
             ((MainMenuFragment) parent).openChildPane(cls, tag, args);
@@ -94,4 +76,27 @@ public class SelectAuthFragment extends Fragment {
             Tools.swapFragment(requireActivity(), cls, tag, args);
         }
     }
-}
+
+    private static class CookieAuthHelper {
+        static void showCookieDialog(Context context) {
+            EditText input = new EditText(context);
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+            input.setMinLines(4);
+            input.setHint("Paste Netscape minecraft.net cookies here...");
+
+            new AlertDialog.Builder(context)
+                    .setTitle("Cookie Login")
+                    .setView(input)
+                    .setPositiveButton("Continue", (dialog, which) -> {
+                        String raw = input.getText().toString().trim();
+                        if (raw.isEmpty()) {
+                            Toast.makeText(context, "Cookie data is empty", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Toast.makeText(context, "Cookie received (" + raw.length() + " chars)", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
+        }
+    }
+                  }
