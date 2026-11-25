@@ -4,7 +4,7 @@ import static net.kdt.pojavlaunch.Tools.hasNoOnlineProfileDialog;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,11 +12,15 @@ import androidx.fragment.app.Fragment;
 
 import net.kdt.pojavlaunch.R;
 import net.kdt.pojavlaunch.Tools;
+import net.kdt.pojavlaunch.authenticator.microsoft.CookieAuthHelper;
+import net.kdt.pojavlaunch.extra.ExtraConstants;
+import net.kdt.pojavlaunch.extra.ExtraCore;
+import net.kdt.pojavlaunch.value.MinecraftAccount;
 
 public class SelectAuthFragment extends Fragment {
     public static final String TAG = "AUTH_SELECT_FRAGMENT";
 
-    public SelectAuthFragment(){
+    public SelectAuthFragment() {
         super(R.layout.fragment_select_auth_method);
     }
 
@@ -25,6 +29,7 @@ public class SelectAuthFragment extends Fragment {
         View mMicrosoftButton = view.findViewById(R.id.button_microsoft_authentication);
         View mElybyButton = view.findViewById(R.id.button_elyby_authentication);
         View mLocalButton = view.findViewById(R.id.button_local_authentication);
+        View mCookieButton = view.findViewById(R.id.button_cookie_authentication);
 
         mMicrosoftButton.setOnClickListener(v -> navigateTo(MicrosoftLoginFragment.class, MicrosoftLoginFragment.TAG, null));
 
@@ -33,12 +38,33 @@ public class SelectAuthFragment extends Fragment {
         mLocalButton.setOnClickListener(v -> hasNoOnlineProfileDialog(requireActivity(),
                 () -> navigateTo(LocalLoginFragment.class, LocalLoginFragment.TAG, null)));
 
-        // Staggered rise-in: header first, then the three cards, then the note
+        if (mCookieButton != null) {
+            mCookieButton.setOnClickListener(v -> CookieAuthHelper.showCookieDialog(requireActivity(), new CookieAuthHelper.Callback() {
+                @Override
+                public void onSuccess(MinecraftAccount account) {
+                    if (!isAdded()) return;
+                    ExtraCore.setValue(ExtraConstants.ACCOUNT_CHANGED, account.username);
+                    Toast.makeText(getContext(), getString(R.string.main_login_done) + " (" + account.username + ")", Toast.LENGTH_SHORT).show();
+                    if (getParentFragmentManager().getBackStackEntryCount() > 0) {
+                        getParentFragmentManager().popBackStack();
+                    }
+                }
+
+                @Override
+                public void onError(String message) {
+                    if (!isAdded()) return;
+                    Toast.makeText(getContext(), "Cookie login failed: " + message, Toast.LENGTH_LONG).show();
+                }
+            }));
+        }
+
+        // Staggered rise-in: header first, then the cards, then the note
         float rise = 18f * getResources().getDisplayMetrics().density;
         animateIn(view.findViewById(R.id.auth_header), 0, rise);
         animateIn(mMicrosoftButton, 90, rise);
         animateIn(mElybyButton, 180, rise);
         animateIn(mLocalButton, 270, rise);
+        animateIn(mCookieButton, 315, rise);
         animateIn(view.findViewById(R.id.auth_footnote), 360, rise);
     }
 
